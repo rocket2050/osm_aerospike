@@ -1,0 +1,28 @@
+---
+# tasks file for aerospike
+#
+ 
+ - name: Installing aerospike pkg in ubuntu
+   block:
+     - unarchive:  
+         src: http://www.aerospike.com/download/server/3.14.1.4/artifact/ubuntu16
+         dest: /opt
+         remote_src: yes
+     - shell: bash /opt/aerospike-server-community-*-ubuntu16.04/asinstall
+   when: ansible_distribution == 'Ubuntu'
+
+ - name: Installing aerospike pkg in Centos7
+   block:
+     - unarchive:
+         src: http://www.aerospike.com/download/server/3.14.1.4/artifact/el6
+         dest: /opt
+         remote_src: yes
+     - shell: bash /opt/aerospike-server-community-*/asinstall
+   when: ansible_distribution == 'CentOS'
+
+      
+
+      
+      
+ 
+   
